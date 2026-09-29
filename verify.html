@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Verify Email - Tiger Finance</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eefbfc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .box {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.10);
+            text-align: center;
+        }
+
+        h1 {
+            color: #087d88;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px;
+            border: 2px solid #d7eeee;
+            border-radius: 12px;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 4px;
+            margin-top: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 18px;
+            border: none;
+            border-radius: 13px;
+            background: #08a9b5;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        #message {
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            color: #087d88;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>🐯 Tiger Finance</h1>
+
+    <h2>Verify your email</h2>
+
+    <p>
+        Enter the verification code sent to your email address.
+    </p>
+
+    <input
+        type="text"
+        id="email"
+        placeholder="Email address"
+        autocomplete="email"
+    >
+
+    <input
+        type="text"
+        id="otp"
+        placeholder="8-digit code"
+        inputmode="numeric"
+        maxlength="8"
+        autocomplete="one-time-code"
+    >
+
+    <button
+        type="button"
+        id="verifyButton"
+    >
+        Verify Email
+    </button>
+
+    <p id="message"></p>
+
+    <a
+        class="back"
+        href="/tiger-finance-/"
+    >
+        ← Back to Tiger Finance
+    </a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+    "https://obrptgadzcpfaljaoref.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_2mYezuBysVNcnbo3eYMcZA_wPfs8XnJ";
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+document
+    .getElementById("verifyButton")
+    .addEventListener("click", async function () {
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+        const token =
+            document
+                .getElementById("otp")
+                .value
+                .trim();
+
+        const message =
+            document.getElementById("message");
+
+
+        if (!email) {
+
+            message.textContent =
+                "Please enter your email address.";
+
+            return;
+        }
+
+
+        if (!/^\d{8}$/.test(token)) {
+
+            message.textContent =
+                "Please enter the 8-digit code.";
+
+            return;
+        }
+
+
+        message.textContent =
+            "Verifying your email...";
+
+
+        const { data, error } =
+            await supabaseClient.auth.verifyOtp({
+
+                email: email,
+
+                token: token,
+
+                type: "email"
+
+            });
+
+
+        if (error) {
+
+            console.error(error);
+
+            message.textContent =
+                "❌ " + error.message;
+
+            return;
+        }
+
+
+        message.textContent =
+            "✅ Email verified successfully!";
+
+
+        setTimeout(function () {
+
+            window.location.href =
+                "/tiger-finance-/";
+
+        }, 1500);
+
+    });
+
+</script>
+
+</body>
+</html>
