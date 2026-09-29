@@ -2115,30 +2115,11 @@ function loadNews() {
 
 /* ==================================================
    JOURNAL
-   ================================================== */
-
-function getJournal() {
-
-    try {
-
-        return JSON.parse(
-            localStorage.getItem(
-                "tigerJournal"
-            ) || "[]"
-        );
-
-    }
-
-    catch {
-
-        return [];
-
-    }
-
-}
+   ================================================== */ 
 
 
-function displayJournal() {
+
+async function displayJournal() {
 
     const container =
         document.getElementById(
@@ -2146,8 +2127,63 @@ function displayJournal() {
         );
 
 
-    const entries =
-        getJournal();
+    container.innerHTML =
+        "<p class='small'>" +
+        "Loading trades..." +
+        "</p>";
+
+
+    // Get the currently logged-in user
+    const {
+        data: {
+            user
+        }
+    } =
+        await supabaseClient.auth.getUser();
+
+
+    if (!user) {
+
+        container.innerHTML =
+            "<p class='small'>" +
+            "Please login to view your journal." +
+            "</p>";
+
+        return;
+
+    }
+
+
+    // Get this user's journal entries
+    const {
+        data: entries,
+        error
+    } =
+        await supabaseClient
+            .from("journal_entries")
+            .select("*")
+            .eq("user_id", user.id)
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+        container.innerHTML =
+            "<p class='small'>" +
+            "Could not load your journal: " +
+            error.message +
+            "</p>";
+
+        return;
+
+    }
 
 
     container.innerHTML =
@@ -2155,6 +2191,7 @@ function displayJournal() {
 
 
     if (
+        !entries ||
         entries.length === 0
     ) {
 
@@ -2219,7 +2256,7 @@ function displayJournal() {
             item.append(
                 "Entry: " +
                 (
-                    trade.entry ||
+                    trade.entry_price ||
                     "Not entered"
                 )
             );
@@ -2247,7 +2284,9 @@ function displayJournal() {
 
             item.append(
                 "Date: " +
-                trade.date
+                new Date(
+                    trade.created_at
+                ).toLocaleString()
             );
 
 
@@ -2273,8 +2312,7 @@ function displayJournal() {
             item.appendChild(
                 document.createElement(
                     "br"
-                )
-            );
+                ));
 
 
             const button =
@@ -2316,7 +2354,7 @@ function displayJournal() {
 }
 
 
-function saveJournal() {
+async function saveJournal() {
 
     const pair =
         document.getElementById(
@@ -2348,9 +2386,7 @@ function saveJournal() {
         ).value.trim();
 
 
-    if (
-        pair === ""
-    ) {
+    if (pair === "") {
 
         alert(
             "Please enter a currency pair."
@@ -2361,42 +2397,70 @@ function saveJournal() {
     }
 
 
-    const entries =
-        getJournal();
+    // Get the currently logged-in user
+    const {
+        data: {
+            user
+        }
+    } =
+        await supabaseClient.auth.getUser();
 
 
-    entries.unshift({
+    if (!user) {
 
-        id:
-            Date.now(),
+        alert(
+            "Please login before saving a trade."
+        );
 
-        date:
-            new Date().toLocaleString(),
+        return;
 
-        pair:
-            pair,
-
-        direction:
-            direction,
-
-        entry:
-            entry,
-
-        result:
-            result,
-
-        notes:
-            notes
-
-    });
+    }
 
 
-    localStorage.setItem(
-        "tigerJournal",
-        JSON.stringify(entries)
-    );
+    // Save the trade to Supabase
+    const {
+        error
+    } =
+        await supabaseClient
+            .from("journal_entries")
+            .insert({
+
+                user_id:
+                    user.id,
+
+                pair:
+                    pair,
+
+                direction:
+                    direction,
+
+                entry_price:
+                    entry,
+
+                result:
+                    result,
+
+                notes:
+                    notes
+
+            });
 
 
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "Could not save trade: " +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    // Clear the form
     document.getElementById(
         "journalPair"
     ).value = "";
@@ -2412,26 +2476,60 @@ function saveJournal() {
     ).value = "";
 
 
+    alert(
+        "✅ Trade saved successfully!"
+    );
+
+
+    // Refresh the Journal
     displayJournal();
 
 }
 
 
-function deleteJournal(
-    id
-) {
+async function deleteJournal(id) {
 
-    const entries =
-        getJournal().filter(
-            trade =>
-                trade.id !== id
+    const {
+        data: {
+            user
+        }
+    } =
+        await supabaseClient.auth.getUser();
+
+
+    if (!user) {
+
+        alert(
+            "Please login first."
         );
 
+        return;
 
-    localStorage.setItem(
-        "tigerJournal",
-        JSON.stringify(entries)
-    );
+    }
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .from("journal_entries")
+            .delete()
+            .eq("id", id)
+            .eq("user_id", user.id);
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "Could not delete trade: " +
+            error.message
+        );
+
+        return;
+
+    }
 
 
     displayJournal();
