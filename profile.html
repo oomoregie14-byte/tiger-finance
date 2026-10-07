@@ -1,161 +1,160 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Tiger Finance - Profile</title>
+<title>Tiger Finance - Profile</title>
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f8f9;
-            color: #222;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f8f9;
+    color: #222;
+}
 
-        header {
-            background: #08a9b5;
-            color: white;
-            padding: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+header {
+    background: #08a9b5;
+    color: white;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
 
-        .logo {
-            font-size: 21px;
-            font-weight: bold;
-        }
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+}
 
-        .back-btn {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.back-btn {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .container {
-            max-width: 700px;
-            margin: 25px auto;
-            padding: 15px;
-        }
+.container {
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 15px;
+}
 
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 22px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-        }
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+}
 
-        h2 {
-            margin-top: 0;
-            color: #087d88;
-        }
+h2 {
+    margin-top: 0;
+    color: #087d88;
+}
 
-        .profile-icon {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            background: #08a9b5;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
+.profile-icon {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #08a9b5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    margin-bottom: 15px;
+}
 
-        .info {
-            background: #f4f8f9;
-            padding: 14px;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
+.info {
+    background: #f4f8f9;
+    padding: 14px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
 
-        .label {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 5px;
-        }
+.label {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 5px;
+}
 
-        .value {
-            font-weight: bold;
-            word-break: break-word;
-        }
+.value {
+    font-weight: bold;
+    word-break: break-word;
+}
 
-        .stat {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background: #f4f8f9;
-            border-radius: 10px;
-            margin-top: 10px;
-        }
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f4f8f9;
+    border-radius: 10px;
+    margin-top: 10px;
+}
 
-        .stat-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #087d88;
-        }
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #087d88;
+}
 
-        input {
-            width: 100%;
-            padding: 13px;
-            margin-top: 8px;
-            margin-bottom: 12px;
-            border: 1px solid #ccc;
-            border-radius: 9px;
-            font-size: 16px;
-        }
+input {
+    width: 100%;
+    padding: 13px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    font-size: 16px;
+}
 
-        button {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 9px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 8px;
-        }
+button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
 
-        .primary-btn {
-            background: #08a9b5;
-            color: white;
-        }
+.primary-btn {
+    background: #08a9b5;
+    color: white;
+}
 
-        .logout-btn {
-            background: #d9534f;
-            color: white;
-        }
+.logout-btn {
+    background: #d9534f;
+    color: white;
+}
 
-        .small {
-            font-size: 14px;
-            color: #666;
-        }
+.small {
+    font-size: 14px;
+    color: #666;
+}
 
-        #message {
-            margin-top: 10px;
-            font-weight: bold;
-        }
+#message {
+    margin-top: 10px;
+    font-weight: bold;
+}
 
-    </style>
+</style>
 
 </head>
 
@@ -165,16 +164,16 @@
 
 <header>
 
-    <div class="logo">
-        🐯 Tiger Finance
-    </div>
+<div class="logo">
+🐯 Tiger Finance
+</div>
 
-    <a
-        href="index.html"
-        class="back-btn"
-    >
-        🏠 Back to Home
-    </a>
+<a
+    href="index.html"
+    class="back-btn"
+>
+🏠 Back to Home
+</a>
 
 </header>
 
@@ -182,130 +181,130 @@
 <div class="container">
 
 
-    <!-- PROFILE -->
+<!-- PROFILE -->
 
-    <div class="card">
+<div class="card">
 
-        <div class="profile-icon">
-            👤
-        </div>
+<div class="profile-icon">
+👤
+</div>
 
-        <h2>
-            My Profile
-        </h2>
+<h2>
+My Profile
+</h2>
 
-        <div class="info">
+<div class="info">
 
-            <div class="label">
-                Email Address
-            </div>
+<div class="label">
+Email Address
+</div>
 
-            <div
-                id="userEmail"
-                class="value"
-            >
-                Loading...
-            </div>
+<div
+    id="userEmail"
+    class="value"
+>
+Loading...
+</div>
 
-        </div>
-
-
-        <div class="info">
-
-            <div class="label">
-                Account ID
-            </div>
-
-            <div
-                id="userId"
-                class="value"
-            >
-                Loading...
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <!-- TRADING STATS -->
+<div class="info">
 
-    <div class="card">
+<div class="label">
+Account ID
+</div>
 
-        <h2>
-            📊 Trading Statistics
-        </h2>
+<div
+    id="userId"
+    class="value"
+>
+Loading...
+</div>
 
-        <div class="stat">
+</div>
 
-            <span>
-                Saved Trades
-            </span>
-
-            <span
-                id="tradeCount"
-                class="stat-number"
-            >
-                0
-            </span>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <!-- CHANGE PASSWORD -->
+<!-- TRADING STATS -->
 
-    <div class="card">
+<div class="card">
 
-        <h2>
-            🔐 Change Password
-        </h2>
+<h2>
+📊 Trading Statistics
+</h2>
 
-        <p class="small">
-            Enter a new password for your Tiger Finance account.
-        </p>
+<div class="stat">
 
-        <input
-            id="newPassword"
-            type="password"
-            placeholder="New password"
-        >
+<span>
+Saved Trades
+</span>
 
-        <input
-            id="confirmPassword"
-            type="password"
-            placeholder="Confirm new password"
-        >
+<span
+    id="tradeCount"
+    class="stat-number"
+>
+Loading...
+</span>
 
-        <button
-            class="primary-btn"
-            onclick="changePassword()"
-        >
-            🔐 Update Password
-        </button>
+</div>
 
-        <div id="message"></div>
-
-    </div>
+</div>
 
 
-    <!-- LOGOUT -->
+<!-- CHANGE PASSWORD -->
 
-    <div class="card">
+<div class="card">
 
-        <h2>
-            🚪 Account
-        </h2>
+<h2>
+🔐 Change Password
+</h2>
 
-        <button
-            class="logout-btn"
-            onclick="logout()"
-        >
-            🚪 Logout
-        </button>
+<p class="small">
+Enter a new password for your Tiger Finance account.
+</p>
 
-    </div>
+<input
+    id="newPassword"
+    type="password"
+    placeholder="New password"
+>
+
+<input
+    id="confirmPassword"
+    type="password"
+    placeholder="Confirm new password"
+>
+
+<button
+    class="primary-btn"
+    onclick="changePassword()"
+>
+🔐 Update Password
+</button>
+
+<div id="message"></div>
+
+</div>
+
+
+<!-- LOGOUT -->
+
+<div class="card">
+
+<h2>
+🚪 Account
+</h2>
+
+<button
+    class="logout-btn"
+    onclick="logout()"
+>
+🚪 Logout
+</button>
+
+</div>
 
 
 </div>
@@ -320,19 +319,25 @@
 
 
 const SUPABASE_URL =
-    "https://obrptgadzcpfaljaoref.supabase.co";
+"https://obrptgadzcpfaljaoref.supabase.co";
 
 
 const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_2mYezuBysVNcnBo3eYMcZA_wPfs8XnJ";
+"sb_publishable_2mYezuBysVNcnBo3eYMcZA_wPfs8XnJ";
 
 
 const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-    );
-
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY,
+    {
+        auth: {
+            autoRefreshToken: true,
+            persistSession: true,
+            detectSessionInUrl: true
+        }
+    }
+);
 
 
 /* =========================
@@ -341,49 +346,50 @@ const supabaseClient =
 
 async function loadProfile() {
 
-    const {
-        data: {
-            user
-        },
-        error
-    } =
-        await supabaseClient
-            .auth
-            .getUser();
+const {
+    data: {
+        user
+    },
+    error
+} =
+await supabaseClient
+    .auth
+    .getUser();
 
 
-    if (
-        error ||
-        !user
-    ) {
+if (
+    error ||
+    !user
+) {
 
-        window.location.href =
-            "index.html";
+window.location.href =
+"index.html";
 
-        return;
-
-    }
-
-
-    document.getElementById(
-        "userEmail"
-    ).textContent =
-        user.email ||
-        "No email";
-
-
-    document.getElementById(
-        "userId"
-    ).textContent =
-        user.id;
-
-
-    loadTradeCount(
-        user.id
-    );
+return;
 
 }
 
+
+document.getElementById(
+    "userEmail"
+).textContent =
+user.email ||
+"No email";
+
+
+document.getElementById(
+    "userId"
+).textContent =
+user.id;
+
+
+/* Load correct trade count */
+
+await loadTradeCount(
+    user.id
+);
+
+}
 
 
 /* =========================
@@ -391,49 +397,53 @@ async function loadProfile() {
 ========================= */
 
 async function loadTradeCount(
-    userId
+userId
 ) {
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("trades")
-            .select(
-                "id",
-                {
-                    count: "exact",
-                    head: true
-                }
-            )
-            .eq(
-                "user_id",
-                userId
-            );
+const {
+    count,
+    error
+} =
+await supabaseClient
+    .from("trades")
+    .select(
+        "*",
+        {
+            count: "exact",
+            head: true
+        }
+    )
+    .eq(
+        "user_id",
+        userId
+    );
 
 
-    if (error) {
+if (error) {
 
-        console.error(
-            "Trade count error:",
-            error
-        );
+console.error(
+    "Trade count error:",
+    error
+);
 
-        return;
+document.getElementById(
+    "tradeCount"
+).textContent =
+"Error";
 
-    }
-
-
-    document.getElementById(
-        "tradeCount"
-    ).textContent =
-        data
-            ? data.length
-            : 0;
+return;
 
 }
 
+
+/* Correct Supabase count */
+
+document.getElementById(
+    "tradeCount"
+).textContent =
+count || 0;
+
+}
 
 
 /* =========================
@@ -442,89 +452,88 @@ async function loadTradeCount(
 
 async function changePassword() {
 
-    const password =
-        document.getElementById(
-            "newPassword"
-        ).value;
+const password =
+document.getElementById(
+    "newPassword"
+).value;
 
 
-    const confirmPassword =
-        document.getElementById(
-            "confirmPassword"
-        ).value;
+const confirmPassword =
+document.getElementById(
+    "confirmPassword"
+).value;
 
 
-    const message =
-        document.getElementById(
-            "message"
-        );
+const message =
+document.getElementById(
+    "message"
+);
 
 
-    message.textContent = "";
+message.textContent = "";
 
 
-    if (
-        password.length < 6
-    ) {
+if (
+password.length < 6
+) {
 
-        message.textContent =
-            "Password must be at least 6 characters.";
+message.textContent =
+"Password must be at least 6 characters.";
 
-        return;
-
-    }
-
-
-    if (
-        password !==
-        confirmPassword
-    ) {
-
-        message.textContent =
-            "Passwords do not match.";
-
-        return;
-
-    }
-
-
-    const {
-        error
-    } =
-        await supabaseClient
-            .auth
-            .updateUser({
-                password:
-                    password
-            });
-
-
-    if (error) {
-
-        message.textContent =
-            "Could not update password: " +
-            error.message;
-
-        return;
-
-    }
-
-
-    message.textContent =
-        "Password updated successfully ✅";
-
-
-    document.getElementById(
-        "newPassword"
-    ).value = "";
-
-
-    document.getElementById(
-        "confirmPassword"
-    ).value = "";
+return;
 
 }
 
+
+if (
+password !==
+confirmPassword
+) {
+
+message.textContent =
+"Passwords do not match.";
+
+return;
+
+}
+
+
+const {
+    error
+} =
+await supabaseClient
+    .auth
+    .updateUser({
+        password:
+        password
+    });
+
+
+if (error) {
+
+message.textContent =
+"Could not update password: " +
+error.message;
+
+return;
+
+}
+
+
+message.textContent =
+"Password updated successfully ✅";
+
+
+document.getElementById(
+    "newPassword"
+).value = "";
+
+
+document.getElementById(
+    "confirmPassword"
+).value = "";
+
+}
 
 
 /* =========================
@@ -533,27 +542,26 @@ async function changePassword() {
 
 async function logout() {
 
-    const confirmed =
-        confirm(
-            "Are you sure you want to logout?"
-        );
+const confirmed =
+confirm(
+    "Are you sure you want to logout?"
+);
 
 
-    if (!confirmed) {
-        return;
-    }
-
-
-    await supabaseClient
-        .auth
-        .signOut();
-
-
-    window.location.href =
-        "index.html";
-
+if (!confirmed) {
+return;
 }
 
+
+await supabaseClient
+    .auth
+    .signOut();
+
+
+window.location.href =
+"index.html";
+
+}
 
 
 /* =========================
