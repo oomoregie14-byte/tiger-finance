@@ -12,6 +12,44 @@
 
 <title>Tiger Finance</title>
 
+
+<!-- ==================================================
+     SUPABASE
+     MUST LOAD BEFORE TIGER FINANCE JAVASCRIPT
+     ================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+    "https://obrptgadzcpfaljaoref.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_2mYezuBysVNcnBo3eYMcZA_wPfs8XnJ";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY,
+        {
+            auth: {
+                autoRefreshToken: true,
+                persistSession: true,
+                detectSessionInUrl: true
+            }
+        }
+    );
+
+
+console.log(
+    "Tiger Finance connected to Supabase"
+);
+
+</script>
+
+
 <style>
 
 /* ==================================================
@@ -28,7 +66,11 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background: #eefbfc;
     color: #222;
 }
@@ -65,7 +107,8 @@ body {
     gap: 8px;
 }
 
-.nav-buttons button {
+.nav-buttons button,
+.nav-buttons a {
     border: none;
     border-radius: 20px;
 
@@ -75,6 +118,61 @@ body {
     color: #087d88;
 
     font-size: 15px;
+    font-weight: bold;
+
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   AUTH
+   ================================================== */
+
+.auth-section {
+    max-width: 600px;
+
+    margin: 20px auto;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,0.07);
+}
+
+.auth-section h2 {
+    color: #087d88;
+}
+
+.auth-section input {
+    margin-top: 10px;
+}
+
+.auth-section button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #08a9b5;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.auth-message {
+    margin-top: 12px;
     font-weight: bold;
 }
 
@@ -148,6 +246,8 @@ body {
 
     font-size: 16px;
     font-weight: bold;
+
+    cursor: pointer;
 }
 
 
@@ -201,6 +301,8 @@ textarea {
 
     font-size: 17px;
     font-weight: bold;
+
+    cursor: pointer;
 }
 
 
@@ -323,6 +425,8 @@ textarea {
     padding: 9px 12px;
 
     border-radius: 8px;
+
+    cursor: pointer;
 }
 
 
@@ -369,8 +473,10 @@ footer {
         flex-direction: column;
     }
 
-    .nav-buttons button {
+    .nav-buttons button,
+    .nav-buttons a {
         width: 100%;
+        text-align: center;
     }
 
     .quick-grid {
@@ -405,6 +511,7 @@ footer {
         🐯 Tiger Finance
     </h1>
 
+
     <div class="nav-buttons">
 
         <button
@@ -413,11 +520,13 @@ footer {
             🏠 Home
         </button>
 
+
         <button
             onclick="scrollToSection('forex')"
         >
             💱 Forex
         </button>
+
 
         <button
             onclick="scrollToSection('markets')"
@@ -425,11 +534,13 @@ footer {
             📊 Markets
         </button>
 
+
         <button
             onclick="scrollToSection('news')"
         >
             📅 News
         </button>
+
 
         <button
             onclick="scrollToSection('journal')"
@@ -437,19 +548,33 @@ footer {
             📒 Journal
         </button>
 
+
+        <a href="profile.html">
+            👤 Profile
+        </a>
+
     </div>
 
 </nav>
 
+
 <!-- ==================================================
-     TIGER FINANCE LOGIN
+     LOGIN
      ================================================== -->
 
-<section id="login-section" class="auth-section">
+<section
+    id="login-section"
+    class="auth-section"
+>
 
-    <h2>🐯 Login to Tiger Finance</h2>
+    <h2>
+        🐯 Login to Tiger Finance
+    </h2>
 
-    <p>Welcome back. Login to continue.</p>
+    <p>
+        Welcome back. Login to continue.
+    </p>
+
 
     <input
         type="email"
@@ -458,6 +583,7 @@ footer {
         autocomplete="email"
     >
 
+
     <input
         type="password"
         id="loginPassword"
@@ -465,24 +591,42 @@ footer {
         autocomplete="current-password"
     >
 
-    <button type="button" id="loginButton">
+
+    <button
+        type="button"
+        id="loginButton"
+    >
         Login
     </button>
 
-    <p id="loginMessage"></p>
+
+    <p
+        id="loginMessage"
+        class="auth-message"
+    ></p>
 
 </section>
 
 
 <!-- ==================================================
-     TIGER FINANCE SIGN UP
+     SIGN UP
      ================================================== -->
 
-<section id="signup-section" class="auth-section">
+<section
+    id="signup-section"
+    class="auth-section"
+>
 
-    <h2>🐯 Create your Tiger Finance account</h2>
+    <h2>
+        🐯 Create your Tiger Finance account
+    </h2>
 
-    <p>Join Tiger Finance and keep your financial tools in one place.</p>
+
+    <p>
+        Join Tiger Finance and keep your
+        financial tools in one place.
+    </p>
+
 
     <input
         type="text"
@@ -491,12 +635,14 @@ footer {
         autocomplete="name"
     >
 
+
     <input
         type="email"
         id="signupEmail"
         placeholder="Email address"
         autocomplete="email"
     >
+
 
     <input
         type="password"
@@ -505,11 +651,19 @@ footer {
         autocomplete="new-password"
     >
 
-    <button type="button" id="signupButton">
+
+    <button
+        type="button"
+        id="signupButton"
+    >
         Create Account
     </button>
 
-    <p id="signupMessage"></p>
+
+    <p
+        id="signupMessage"
+        class="auth-message"
+    ></p>
 
 </section>
 
@@ -532,10 +686,12 @@ footer {
             🐯 Welcome to Tiger Finance
         </h1>
 
+
         <p>
             Your personal finance and
             trading dashboard.
         </p>
+
 
         <p>
             Calculate trading risk,
@@ -556,17 +712,20 @@ footer {
             💱 Forex Calculator
         </button>
 
+
         <button
             onclick="scrollToSection('markets')"
         >
             📊 Market Dashboard
         </button>
 
+
         <button
             onclick="scrollToSection('news')"
         >
             📅 Economic News
         </button>
+
 
         <button
             onclick="scrollToSection('journal')"
@@ -597,6 +756,7 @@ footer {
         Account Currency
     </label>
 
+
     <select id="accountCurrency">
 
         <option value="USD">
@@ -621,6 +781,7 @@ footer {
     <label>
         Currency Pair
     </label>
+
 
     <select id="currencyPair">
 
@@ -691,6 +852,7 @@ footer {
         Account Balance
     </label>
 
+
     <input
         id="balance"
         type="number"
@@ -703,6 +865,7 @@ footer {
         Risk %
     </label>
 
+
     <input
         id="risk"
         type="number"
@@ -714,6 +877,7 @@ footer {
     <label>
         Stop Loss (pips)
     </label>
+
 
     <input
         id="stopLoss"
@@ -756,21 +920,22 @@ footer {
     </h2>
 
 
-    <!-- FOREX -->
-
     <div class="market-card">
 
         <h3>
             💱 Forex
         </h3>
 
+
         <p id="forexStatus">
             Checking forex sessions...
         </p>
 
+
         <p id="forexOverlap">
             Checking overlap...
         </p>
+
 
         <p>
             🇳🇬 Nigeria Time:
@@ -782,17 +947,17 @@ footer {
     </div>
 
 
-    <!-- CRYPTO -->
-
     <div class="market-card">
 
         <h3>
             ₿ Crypto
         </h3>
 
+
         <p class="open">
             🟢 OPEN — Crypto operates 24/7.
         </p>
+
 
         <p>
             Bitcoin:
@@ -804,6 +969,7 @@ footer {
             </strong>
         </p>
 
+
         <p>
             Ethereum:
             <strong
@@ -813,6 +979,7 @@ footer {
                 Loading...
             </strong>
         </p>
+
 
         <p
             id="cryptoStatus"
@@ -824,17 +991,17 @@ footer {
     </div>
 
 
-    <!-- US STOCKS -->
-
     <div class="market-card">
 
         <h3>
             🇺🇸 US Stock Market
         </h3>
 
+
         <p id="usStockStatus">
             Checking...
         </p>
+
 
         <p class="small">
             Regular session:
@@ -845,17 +1012,17 @@ footer {
     </div>
 
 
-    <!-- NIGERIAN STOCKS -->
-
     <div class="market-card">
 
         <h3>
             🇳🇬 Nigerian Stock Market
         </h3>
 
+
         <p id="ngStockStatus">
             Checking...
         </p>
+
 
         <p class="small">
             Session shown:
@@ -865,8 +1032,6 @@ footer {
 
     </div>
 
-
-    <!-- WATCHLIST -->
 
     <div class="market-card">
 
@@ -944,6 +1109,7 @@ footer {
         📅 Economic News
     </h2>
 
+
     <p>
         Tiger Finance economic-news area.
     </p>
@@ -964,6 +1130,7 @@ footer {
             <strong>
                 📢 Economic Calendar
             </strong>
+
 
             <p>
                 Major economic announcements
@@ -995,6 +1162,7 @@ footer {
         Currency Pair
     </label>
 
+
     <input
         id="journalPair"
         placeholder="Example: EUR/USD"
@@ -1004,6 +1172,7 @@ footer {
     <label>
         Direction
     </label>
+
 
     <select id="journalDirection">
 
@@ -1022,6 +1191,7 @@ footer {
         Entry Price
     </label>
 
+
     <input
         id="journalEntry"
         type="number"
@@ -1033,6 +1203,7 @@ footer {
     <label>
         Result
     </label>
+
 
     <select id="journalResult">
 
@@ -1054,6 +1225,7 @@ footer {
     <label>
         Notes
     </label>
+
 
     <textarea
         id="journalNotes"
@@ -1084,9 +1256,11 @@ footer {
         🐯 Tiger Finance
     </strong>
 
+
     <p>
         Forex • Crypto • Stocks • Finance
     </p>
+
 
     <p>
         © 2026 Tiger Finance
@@ -1099,11 +1273,6 @@ footer {
 
 
 <script>
-
-/* ==================================================
-   TIGER FINANCE JAVASCRIPT
-   ================================================== */
-
 
 /* ==================================================
    NAVIGATION
@@ -1133,39 +1302,32 @@ function calculateLotSize() {
 
     const balance =
         Number(
-            document.getElementById(
-                "balance"
-            ).value
+            document.getElementById("balance").value
         );
+
 
     const risk =
         Number(
-            document.getElementById(
-                "risk"
-            ).value
+            document.getElementById("risk").value
         );
+
 
     const stopLoss =
         Number(
-            document.getElementById(
-                "stopLoss"
-            ).value
+            document.getElementById("stopLoss").value
         );
+
 
     const pair =
-        document.getElementById(
-            "currencyPair"
-        ).value;
+        document.getElementById("currencyPair").value;
+
 
     const accountCurrency =
-        document.getElementById(
-            "accountCurrency"
-        ).value;
+        document.getElementById("accountCurrency").value;
+
 
     const result =
-        document.getElementById(
-            "lotResult"
-        );
+        document.getElementById("lotResult");
 
 
     if (
@@ -1209,19 +1371,8 @@ function calculateLotSize() {
 
 
     const riskAmount =
-        balance *
-        risk /
-        100;
+        balance * risk / 100;
 
-
-    /*
-       This calculator uses
-       approximate USD pip values.
-
-       A production-grade broker calculator
-       should obtain live prices and the
-       broker's contract specifications.
-    */
 
     const pipValues = {
 
@@ -1256,8 +1407,7 @@ function calculateLotSize() {
             "<span class='warning'>" +
             "⚠️ Exact lot sizing for " +
             accountCurrency +
-            " requires a live exchange-rate " +
-            "conversion." +
+            " requires live exchange-rate conversion." +
             "</span>";
 
         return;
@@ -1280,9 +1430,7 @@ function calculateLotSize() {
             "<br><br>" +
 
             "<span class='warning'>" +
-            "⚠️ This pair requires live " +
-            "exchange-rate conversion for " +
-            "an exact pip value." +
+            "⚠️ This pair requires live exchange-rate conversion for an exact pip value." +
             "</span>";
 
         return;
@@ -1310,8 +1458,7 @@ function calculateLotSize() {
 
         "<strong>Risk:</strong> " +
         risk.toFixed(2) +
-        "%" +
-        "<br>" +
+        "%<br>" +
 
         "<strong>Risk Amount:</strong> $" +
         riskAmount.toFixed(2) +
@@ -1319,17 +1466,14 @@ function calculateLotSize() {
 
         "<strong>Stop Loss:</strong> " +
         stopLoss.toFixed(1) +
-        " pips" +
-        "<br>" +
+        " pips<br>" +
 
         "<strong>Estimated Lot Size:</strong> " +
         lotSize.toFixed(2) +
         "<br><br>" +
 
         "<span class='small'>" +
-        "Estimate only. Actual broker pip values, " +
-        "contract specifications, conversion rates " +
-        "and trading costs can differ." +
+        "Estimate only. Actual broker pip values, contract specifications, conversion rates and trading costs can differ." +
         "</span>";
 
 }
@@ -1339,9 +1483,7 @@ function calculateLotSize() {
    TIME HELPER
    ================================================== */
 
-function getMinutes(
-    timeZone
-) {
+function getMinutes(timeZone) {
 
     const parts =
         new Intl.DateTimeFormat(
@@ -1360,8 +1502,7 @@ function getMinutes(
     const hour =
         Number(
             parts.find(
-                p =>
-                    p.type === "hour"
+                p => p.type === "hour"
             ).value
         );
 
@@ -1369,16 +1510,12 @@ function getMinutes(
     const minute =
         Number(
             parts.find(
-                p =>
-                    p.type === "minute"
+                p => p.type === "minute"
             ).value
         );
 
 
-    return (
-        hour * 60 +
-        minute
-    );
+    return hour * 60 + minute;
 
 }
 
@@ -1394,18 +1531,12 @@ function sessionIsOpen(
 ) {
 
     const minutes =
-        getMinutes(
-            timeZone
-        );
+        getMinutes(timeZone);
 
 
     return (
-        minutes >=
-        openHour * 60
-    ) &&
-    (
-        minutes <
-        closeHour * 60
+        minutes >= openHour * 60 &&
+        minutes < closeHour * 60
     );
 
 }
@@ -1428,9 +1559,7 @@ function updateMarketDashboard() {
         )
     ) {
 
-        active.push(
-            "Sydney"
-        );
+        active.push("Sydney");
 
     }
 
@@ -1443,9 +1572,7 @@ function updateMarketDashboard() {
         )
     ) {
 
-        active.push(
-            "Tokyo"
-        );
+        active.push("Tokyo");
 
     }
 
@@ -1458,9 +1585,7 @@ function updateMarketDashboard() {
         )
     ) {
 
-        active.push(
-            "London"
-        );
+        active.push("London");
 
     }
 
@@ -1473,9 +1598,7 @@ function updateMarketDashboard() {
         )
     ) {
 
-        active.push(
-            "New York"
-        );
+        active.push("New York");
 
     }
 
@@ -1486,9 +1609,7 @@ function updateMarketDashboard() {
         );
 
 
-    if (
-        active.length
-    ) {
+    if (active.length) {
 
         forexStatus.innerHTML =
             "<span class='open'>" +
@@ -1550,20 +1671,13 @@ function updateMarketDashboard() {
         new Intl.DateTimeFormat(
             "en-NG",
             {
-                timeZone:
-                    "Africa/Lagos",
+                timeZone: "Africa/Lagos",
 
-                hour:
-                    "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
 
-                minute:
-                    "2-digit",
-
-                second:
-                    "2-digit",
-
-                hour12:
-                    false
+                hour12: false
             }
         ).format(
             new Date()
@@ -1585,8 +1699,6 @@ function updateStockMarkets() {
         new Date();
 
 
-    /* ---------- US ---------- */
-
     const us =
         new Intl.DateTimeFormat(
             "en-US",
@@ -1594,35 +1706,26 @@ function updateStockMarkets() {
                 timeZone:
                     "America/New_York",
 
-                weekday:
-                    "short",
+                weekday: "short",
 
-                hour:
-                    "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
 
-                minute:
-                    "2-digit",
-
-                hour12:
-                    false
+                hour12: false
             }
-        ).formatToParts(
-            now
-        );
+        ).formatToParts(now);
 
 
     const usDay =
         us.find(
-            p =>
-                p.type === "weekday"
+            p => p.type === "weekday"
         ).value;
 
 
     const usHour =
         Number(
             us.find(
-                p =>
-                    p.type === "hour"
+                p => p.type === "hour"
             ).value
         );
 
@@ -1630,15 +1733,13 @@ function updateStockMarkets() {
     const usMinute =
         Number(
             us.find(
-                p =>
-                    p.type === "minute"
+                p => p.type === "minute"
             ).value
         );
 
 
     const usMinutes =
-        usHour * 60 +
-        usMinute;
+        usHour * 60 + usMinute;
 
 
     const usOpen =
@@ -1654,13 +1755,9 @@ function updateStockMarkets() {
     ).innerHTML =
 
         usOpen
+            ? "<span class='open'>🟢 OPEN</span>"
+            : "<span class='closed'>🔴 CLOSED</span>";
 
-        ? "<span class='open'>🟢 OPEN</span>"
-
-        : "<span class='closed'>🔴 CLOSED</span>";
-
-
-    /* ---------- NIGERIA ---------- */
 
     const ng =
         new Intl.DateTimeFormat(
@@ -1669,35 +1766,26 @@ function updateStockMarkets() {
                 timeZone:
                     "Africa/Lagos",
 
-                weekday:
-                    "short",
+                weekday: "short",
 
-                hour:
-                    "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
 
-                minute:
-                    "2-digit",
-
-                hour12:
-                    false
+                hour12: false
             }
-        ).formatToParts(
-            now
-        );
+        ).formatToParts(now);
 
 
     const ngDay =
         ng.find(
-            p =>
-                p.type === "weekday"
+            p => p.type === "weekday"
         ).value;
 
 
     const ngHour =
         Number(
             ng.find(
-                p =>
-                    p.type === "hour"
+                p => p.type === "hour"
             ).value
         );
 
@@ -1705,15 +1793,13 @@ function updateStockMarkets() {
     const ngMinute =
         Number(
             ng.find(
-                p =>
-                    p.type === "minute"
+                p => p.type === "minute"
             ).value
         );
 
 
     const ngMinutes =
-        ngHour * 60 +
-        ngMinute;
+        ngHour * 60 + ngMinute;
 
 
     const ngOpen =
@@ -1729,10 +1815,8 @@ function updateStockMarkets() {
     ).innerHTML =
 
         ngOpen
-
-        ? "<span class='open'>🟢 OPEN</span>"
-
-        : "<span class='closed'>🔴 CLOSED</span>";
+            ? "<span class='open'>🟢 OPEN</span>"
+            : "<span class='closed'>🔴 CLOSED</span>";
 
 }
 
@@ -1748,10 +1832,12 @@ async function loadCryptoPrices() {
             "bitcoinPrice"
         );
 
+
     const ethereum =
         document.getElementById(
             "ethereumPrice"
         );
+
 
     const status =
         document.getElementById(
@@ -1769,15 +1855,12 @@ async function loadCryptoPrices() {
             await fetch(
                 "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd",
                 {
-                    cache:
-                        "no-store"
+                    cache: "no-store"
                 }
             );
 
 
-        if (
-            !response.ok
-        ) {
+        if (!response.ok) {
 
             throw new Error(
                 "Crypto API unavailable"
@@ -1809,11 +1892,8 @@ async function loadCryptoPrices() {
             ).toLocaleString(
                 "en-US",
                 {
-                    minimumFractionDigits:
-                        2,
-
-                    maximumFractionDigits:
-                        2
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
                 }
             );
 
@@ -1825,11 +1905,8 @@ async function loadCryptoPrices() {
             ).toLocaleString(
                 "en-US",
                 {
-                    minimumFractionDigits:
-                        2,
-
-                    maximumFractionDigits:
-                        2
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
                 }
             );
 
@@ -1838,12 +1915,11 @@ async function loadCryptoPrices() {
             "Last updated: " +
             new Date().toLocaleTimeString();
 
-
     }
 
     catch (error) {
 
-        console.log(
+        console.error(
             "Crypto error:",
             error
         );
@@ -1851,6 +1927,7 @@ async function loadCryptoPrices() {
 
         bitcoin.textContent =
             "Unavailable";
+
 
         ethereum.textContent =
             "Unavailable";
@@ -1901,8 +1978,7 @@ function displayWatchlist() {
         getWatchlist();
 
 
-    container.innerHTML =
-        "";
+    container.innerHTML = "";
 
 
     if (
@@ -1959,24 +2035,16 @@ function displayWatchlist() {
             button.onclick =
                 function() {
 
-                    removeWatchPair(
-                        pair
-                    );
+                    removeWatchPair(pair);
 
                 };
 
 
-            row.appendChild(
-                name
-            );
+            row.appendChild(name);
 
-            row.appendChild(
-                button
-            );
+            row.appendChild(button);
 
-            container.appendChild(
-                row
-            );
+            container.appendChild(row);
 
         }
     );
@@ -2000,9 +2068,8 @@ function addWatchPair() {
         !list.includes(pair)
     ) {
 
-        list.push(
-            pair
-        );
+        list.push(pair);
+
 
         localStorage.setItem(
             "tigerWatchlist",
@@ -2017,14 +2084,11 @@ function addWatchPair() {
 }
 
 
-function removeWatchPair(
-    pair
-) {
+function removeWatchPair(pair) {
 
     const list =
         getWatchlist().filter(
-            item =>
-                item !== pair
+            item => item !== pair
         );
 
 
@@ -2114,10 +2178,38 @@ function loadNews() {
 
 
 /* ==================================================
+   GET CURRENT USER
+   ================================================== */
+
+async function getCurrentUser() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient.auth.getUser();
+
+
+    if (error) {
+
+        console.error(
+            "Get user error:",
+            error
+        );
+
+        return null;
+
+    }
+
+
+    return data.user || null;
+
+}
+
+
+/* ==================================================
    JOURNAL
-   ================================================== */ 
-
-
+   ================================================== */
 
 async function displayJournal() {
 
@@ -2133,13 +2225,8 @@ async function displayJournal() {
         "</p>";
 
 
-    // Get the currently logged-in user
-    const {
-        data: {
-            user
-        }
-    } =
-        await supabaseClient.auth.getUser();
+    const user =
+        await getCurrentUser();
 
 
     if (!user) {
@@ -2154,15 +2241,19 @@ async function displayJournal() {
     }
 
 
-    // Get this user's journal entries
     const {
         data: entries,
         error
     } =
         await supabaseClient
-            .from("journal_entries")
-            .select("*")
-            .eq("user_id", user.id)
+            .from("trades")
+            .select(
+                "id, pair, direction, entry, result, notes, created_at"
+            )
+            .eq(
+                "user_id",
+                user.id
+            )
             .order(
                 "created_at",
                 {
@@ -2173,7 +2264,11 @@ async function displayJournal() {
 
     if (error) {
 
-        console.error(error);
+        console.error(
+            "Journal load error:",
+            error
+        );
+
 
         container.innerHTML =
             "<p class='small'>" +
@@ -2186,8 +2281,7 @@ async function displayJournal() {
     }
 
 
-    container.innerHTML =
-        "";
+    container.innerHTML = "";
 
 
     if (
@@ -2228,15 +2322,11 @@ async function displayJournal() {
                 trade.pair;
 
 
-            item.appendChild(
-                title
-            );
+            item.appendChild(title);
 
 
             item.appendChild(
-                document.createElement(
-                    "br"
-                )
+                document.createElement("br")
             );
 
 
@@ -2247,25 +2337,21 @@ async function displayJournal() {
 
 
             item.appendChild(
-                document.createElement(
-                    "br"
-                )
+                document.createElement("br")
             );
 
 
             item.append(
                 "Entry: " +
                 (
-                    trade.entry_price ||
+                    trade.entry ||
                     "Not entered"
                 )
             );
 
 
             item.appendChild(
-                document.createElement(
-                    "br"
-                )
+                document.createElement("br")
             );
 
 
@@ -2276,9 +2362,7 @@ async function displayJournal() {
 
 
             item.appendChild(
-                document.createElement(
-                    "br"
-                )
+                document.createElement("br")
             );
 
 
@@ -2290,14 +2374,10 @@ async function displayJournal() {
             );
 
 
-            if (
-                trade.notes
-            ) {
+            if (trade.notes) {
 
                 item.appendChild(
-                    document.createElement(
-                        "br"
-                    )
+                    document.createElement("br")
                 );
 
 
@@ -2310,9 +2390,8 @@ async function displayJournal() {
 
 
             item.appendChild(
-                document.createElement(
-                    "br"
-                ));
+                document.createElement("br")
+            );
 
 
             const button =
@@ -2339,14 +2418,10 @@ async function displayJournal() {
                 };
 
 
-            item.appendChild(
-                button
-            );
+            item.appendChild(button);
 
 
-            container.appendChild(
-                item
-            );
+            container.appendChild(item);
 
         }
     );
@@ -2397,13 +2472,8 @@ async function saveJournal() {
     }
 
 
-    // Get the currently logged-in user
-    const {
-        data: {
-            user
-        }
-    } =
-        await supabaseClient.auth.getUser();
+    const user =
+        await getCurrentUser();
 
 
     if (!user) {
@@ -2417,12 +2487,11 @@ async function saveJournal() {
     }
 
 
-    // Save the trade to Supabase
     const {
         error
     } =
         await supabaseClient
-            .from("journal_entries")
+            .from("trades")
             .insert({
 
                 user_id:
@@ -2434,7 +2503,7 @@ async function saveJournal() {
                 direction:
                     direction,
 
-                entry_price:
+                entry:
                     entry,
 
                 result:
@@ -2448,7 +2517,11 @@ async function saveJournal() {
 
     if (error) {
 
-        console.error(error);
+        console.error(
+            "Save journal error:",
+            error
+        );
+
 
         alert(
             "Could not save trade: " +
@@ -2460,7 +2533,6 @@ async function saveJournal() {
     }
 
 
-    // Clear the form
     document.getElementById(
         "journalPair"
     ).value = "";
@@ -2477,11 +2549,10 @@ async function saveJournal() {
 
 
     alert(
-        "✅ Trade saved successfully!"
+        "✅ Trade saved successfully to Tiger Finance ☁️"
     );
 
 
-    // Refresh the Journal
     displayJournal();
 
 }
@@ -2489,12 +2560,8 @@ async function saveJournal() {
 
 async function deleteJournal(id) {
 
-    const {
-        data: {
-            user
-        }
-    } =
-        await supabaseClient.auth.getUser();
+    const user =
+        await getCurrentUser();
 
 
     if (!user) {
@@ -2508,19 +2575,42 @@ async function deleteJournal(id) {
     }
 
 
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete this trade?"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
     const {
         error
     } =
         await supabaseClient
-            .from("journal_entries")
+            .from("trades")
             .delete()
-            .eq("id", id)
-            .eq("user_id", user.id);
+            .eq(
+                "id",
+                id
+            )
+            .eq(
+                "user_id",
+                user.id
+            );
 
 
     if (error) {
 
-        console.error(error);
+        console.error(
+            "Delete journal error:",
+            error
+        );
+
 
         alert(
             "Could not delete trade: " +
@@ -2532,9 +2622,321 @@ async function deleteJournal(id) {
     }
 
 
+    alert(
+        "Trade deleted successfully."
+    );
+
+
     displayJournal();
 
 }
+
+
+/* ==================================================
+   LOGIN STATE
+   ================================================== */
+
+async function updateLoginState() {
+
+    const user =
+        await getCurrentUser();
+
+
+    const loginSection =
+        document.getElementById(
+            "login-section"
+        );
+
+
+    const signupSection =
+        document.getElementById(
+            "signup-section"
+        );
+
+
+    if (user) {
+
+        loginSection.innerHTML = `
+
+            <h2>
+                🐯 Welcome back!
+            </h2>
+
+            <p>
+                You are logged in to Tiger Finance.
+            </p>
+
+            <p class="small">
+                ${user.email}
+            </p>
+
+            <a
+                href="profile.html"
+                style="
+                    display:block;
+                    text-align:center;
+                    background:#08a9b5;
+                    color:white;
+                    padding:14px;
+                    border-radius:12px;
+                    text-decoration:none;
+                    font-weight:bold;
+                "
+            >
+                👤 Open My Profile
+            </a>
+
+        `;
+
+
+        signupSection.style.display =
+            "none";
+
+
+        displayJournal();
+
+    }
+
+}
+
+
+/* ==================================================
+   SIGN UP
+   ================================================== */
+
+document
+    .getElementById("signupButton")
+    .addEventListener(
+        "click",
+        async function() {
+
+            const name =
+                document.getElementById(
+                    "signupName"
+                ).value.trim();
+
+
+            const email =
+                document.getElementById(
+                    "signupEmail"
+                ).value.trim();
+
+
+            const password =
+                document.getElementById(
+                    "signupPassword"
+                ).value;
+
+
+            const message =
+                document.getElementById(
+                    "signupMessage"
+                );
+
+
+            if (
+                !name ||
+                !email ||
+                !password
+            ) {
+
+                message.textContent =
+                    "Please fill in all fields.";
+
+                return;
+
+            }
+
+
+            if (
+                password.length < 6
+            ) {
+
+                message.textContent =
+                    "Password must be at least 6 characters.";
+
+                return;
+
+            }
+
+
+            message.textContent =
+                "Creating your account...";
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.signUp({
+
+                    email:
+                        email,
+
+                    password:
+                        password,
+
+                    options: {
+
+                        emailRedirectTo:
+                            "https://oomoregie14-byte.github.io/tiger-finance/",
+
+                        data: {
+
+                            full_name:
+                                name
+
+                        }
+
+                    }
+
+                });
+
+
+            if (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    error.message;
+
+                return;
+
+            }
+
+
+            if (
+                data.user &&
+                !data.session
+            ) {
+
+                message.textContent =
+                    "Account created! Please check your email to confirm your account.";
+
+            }
+
+            else {
+
+                message.textContent =
+                    "Account created successfully!";
+
+                updateLoginState();
+
+            }
+
+        }
+    );
+
+
+/* ==================================================
+   LOGIN
+   ================================================== */
+
+document
+    .getElementById("loginButton")
+    .addEventListener(
+        "click",
+        async function() {
+
+            const email =
+                document.getElementById(
+                    "loginEmail"
+                ).value.trim();
+
+
+            const password =
+                document.getElementById(
+                    "loginPassword"
+                ).value;
+
+
+            const message =
+                document.getElementById(
+                    "loginMessage"
+                );
+
+
+            if (
+                !email ||
+                !password
+            ) {
+
+                message.textContent =
+                    "Please enter your email and password.";
+
+                return;
+
+            }
+
+
+            message.textContent =
+                "Logging in...";
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.signInWithPassword({
+
+                    email:
+                        email,
+
+                    password:
+                        password
+
+                });
+
+
+            if (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    error.message;
+
+                return;
+
+            }
+
+
+            message.textContent =
+                "Login successful! Welcome to Tiger Finance.";
+
+
+            console.log(
+                "Tiger Finance user logged in:",
+                data.user
+            );
+
+
+            updateLoginState();
+
+        }
+    );
+
+
+/* ==================================================
+   AUTH STATE LISTENER
+   ================================================== */
+
+supabaseClient.auth.onAuthStateChange(
+    function(event, session) {
+
+        console.log(
+            "Tiger Finance auth event:",
+            event
+        );
+
+
+        if (session) {
+
+            updateLoginState();
+
+        }
+
+    }
+);
 
 
 /* ==================================================
@@ -2550,6 +2952,8 @@ displayWatchlist();
 displayJournal();
 
 loadNews();
+
+updateLoginState();
 
 
 /* ==================================================
@@ -2569,124 +2973,6 @@ setInterval(
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-const SUPABASE_URL = "https://obrptgadzcpfaljaoref.supabase.co";
-
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_2mYezuBysVNcnBo3eYMcZA_wPfs8XnJ";
-
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-);
-
-console.log("Tiger Finance connected to Supabase");
-</script>
-<script>
-document
-    .getElementById("signupButton")
-    .addEventListener("click", async function () {
-
-        const name =
-            document.getElementById("signupName").value.trim();
-
-        const email =
-            document.getElementById("signupEmail").value.trim();
-
-        const password =
-            document.getElementById("signupPassword").value;
-
-        const message =
-            document.getElementById("signupMessage");
-
-        if (!name || !email || !password) {
-            message.textContent =
-                "Please fill in all fields.";
-            return;
-        }
-
-        if (password.length < 6) {
-            message.textContent =
-                "Password must be at least 6 characters.";
-            return;
-        }
-
-        message.textContent =
-            "Creating your account...";
-
-        const { data, error } =
-    await supabaseClient.auth.signUp({
-        email: email,
-        password: password,
-        options: {
-            emailRedirectTo:
-                "https://oomoregie14-byte.github.io/tiger-finance-/",
-
-            data: {
-                full_name: name
-            }
-        }
-    });
-
-        if (error) {
-            console.error(error);
-            message.textContent =
-                error.message;
-            return;
-        }
-
-        if (data.user && !data.session) {
-            message.textContent =
-                "Account created! Please check your email to confirm your account.";
-        } else {
-            message.textContent =
-                "Account created successfully!";
-        }
-
-    });
-</script>
-<script>
-document
-    .getElementById("loginButton")
-    .addEventListener("click", async function () {
-
-        const email =
-            document.getElementById("loginEmail").value.trim();
-
-        const password =
-            document.getElementById("loginPassword").value;
-
-        const message =
-            document.getElementById("loginMessage");
-
-        if (!email || !password) {
-            message.textContent =
-                "Please enter your email and password.";
-            return;
-        }
-
-        message.textContent =
-            "Logging in...";
-
-        const { data, error } =
-            await supabaseClient.auth.signInWithPassword({
-                email: email,
-                password: password
-            });
-
-        if (error) {
-            console.error(error);
-            message.textContent = error.message;
-            return;
-        }
-
-        message.textContent =
-            "Login successful! Welcome to Tiger Finance.";
-
-        console.log("Tiger Finance user logged in:", data.user);
-    });
-</script>
 
 </body>
 
