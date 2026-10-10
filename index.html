@@ -51,10 +51,23 @@ console.log(
 
 
 <style>
+    /* =========================================
+   TIGER FINANCE — DARK DASHBOARD DESIGN
+========================================= */
 
-/* ==================================================
-   TIGER FINANCE
-   ================================================== */
+:root {
+    --bg: #0b1020;
+    --panel: #141b2d;
+    --panel-light: #1b2540;
+    --border: #293653;
+    --text: #f2f5ff;
+    --muted: #9ba8c7;
+    --purple: #7567ff;
+    --purple-light: #a49aff;
+    --teal: #21d4c2;
+    --green: #38d996;
+    --red: #ff657a;
+}
 
 * {
     box-sizing: border-box;
@@ -62,450 +75,25 @@ console.log(
 
 html {
     scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background: #eefbfc;
-    color: #222;
-}
-
-
-/* ==================================================
-   NAVIGATION
-   ================================================== */
-
-.top-nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    background: #08a9b5;
-    color: white;
-
-    padding: 15px;
-
-    box-shadow:
-        0 4px 15px rgba(0,0,0,0.15);
-}
-
-.logo {
-    text-align: center;
-    margin: 5px 0 15px;
-    font-size: 28px;
-}
-
-.nav-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-}
-
-.nav-buttons button,
-.nav-buttons a {
-    border: none;
-    border-radius: 20px;
-
-    padding: 11px 15px;
-
-    background: white;
-    color: #087d88;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-/* ==================================================
-   AUTH
-   ================================================== */
-
-.auth-section {
-    max-width: 600px;
-
-    margin: 20px auto;
-
-    padding: 25px;
-
-    background: white;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.07);
-}
-
-.auth-section h2 {
-    color: #087d88;
-}
-
-.auth-section input {
-    margin-top: 10px;
-}
-
-.auth-section button {
-    width: 100%;
-
-    margin-top: 15px;
-
-    padding: 14px;
-
-    border: none;
-    border-radius: 12px;
-
-    background: #08a9b5;
-    color: white;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.auth-message {
-    margin-top: 12px;
-    font-weight: bold;
-}
-
-
-/* ==================================================
-   MAIN
-   ================================================== */
-
-.container {
-    max-width: 950px;
-    margin: auto;
-    padding: 15px;
-}
-
-.card {
-    background: white;
-
-    margin: 20px 0;
-    padding: 25px;
-
-    border-radius: 22px;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.07);
-}
-
-.card h2 {
-    color: #087d88;
-    margin-top: 0;
-}
-
-
-/* ==================================================
-   HOME
-   ================================================== */
-
-.hero {
-    text-align: center;
-}
-
-.hero h1 {
-    color: #087d88;
-    font-size: 34px;
-}
-
-.hero p {
-    font-size: 17px;
-    line-height: 1.6;
-}
-
-.quick-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 12px;
-
-    margin-top: 20px;
-}
-
-.quick-grid button {
-    border: none;
-
-    background: #08a9b5;
-    color: white;
-
-    padding: 17px;
-
-    border-radius: 15px;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-
-/* ==================================================
-   FORMS
-   ================================================== */
-
-label {
-    display: block;
-
-    margin-top: 15px;
-    margin-bottom: 7px;
-
-    font-weight: bold;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-
-    padding: 13px;
-
-    border:
-        2px solid #d7eeee;
-
-    border-radius: 11px;
-
-    background: white;
-
-    font-size: 16px;
-}
-
-textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.primary-btn {
-    width: 100%;
-
-    margin-top: 18px;
-
-    padding: 15px;
-
-    border: none;
-    border-radius: 13px;
-
-    background: #08a9b5;
-    color: white;
-
-    font-size: 17px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-
-/* ==================================================
-   RESULT
-   ================================================== */
-
-.result {
-    margin-top: 18px;
-
-    padding: 17px;
-
-    background: #effcfd;
-
-    border-left:
-        6px solid #08a9b5;
-
-    border-radius: 12px;
-
-    line-height: 1.8;
-}
-
-
-/* ==================================================
-   MARKET
-   ================================================== */
-
-.market-card {
-    background: #f8ffff;
-
-    margin-top: 15px;
-
-    padding: 20px;
-
-    border-radius: 17px;
-
-    border-left:
-        6px solid #08a9b5;
-}
-
-.market-card h3 {
-    margin-top: 0;
-    font-size: 21px;
-}
-
-.open {
-    color: green;
-    font-weight: bold;
-}
-
-.closed {
-    color: #d00000;
-    font-weight: bold;
-}
-
-.warning {
-    color: #a56700;
-    font-weight: bold;
-}
-
-.price {
-    font-size: 21px;
-    font-weight: bold;
-}
-
-.small {
-    color: #777;
-    font-size: 13px;
-}
-
-
-/* ==================================================
-   NEWS
-   ================================================== */
-
-.news-item {
-    margin-top: 12px;
-
-    padding: 17px;
-
-    background: #f8ffff;
-
-    border-left:
-        5px solid #08a9b5;
-
-    border-radius: 12px;
-
-    line-height: 1.6;
-}
-
-
-/* ==================================================
-   WATCHLIST
-   ================================================== */
-
-.watch-item {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 10px;
-
-    margin-top: 10px;
-
-    padding: 13px;
-
-    background: #f5ffff;
-
-    border-radius: 10px;
-}
-
-.remove-btn,
-.delete-btn {
-    border: none;
-
-    background: #dc3545;
-    color: white;
-
-    padding: 9px 12px;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-}
-
-
-/* ==================================================
-   JOURNAL
-   ================================================== */
-
-.journal-entry {
-    margin-top: 15px;
-
-    padding: 17px;
-
-    background: #f8ffff;
-
-    border-left:
-        5px solid #08a9b5;
-
-    border-radius: 12px;
-
-    line-height: 1.7;
-}
-
-
-/* ==================================================
-   FOOTER
-   ================================================== */
-
-footer {
-    text-align: center;
-
-    padding: 30px;
-
-    color: #666;
-}
-
-
-/* ==================================================
-   MOBILE
-   ================================================== */
-
-@media (max-width: 600px) {
-
-    .nav-buttons {
-        flex-direction: column;
-    }
-
-    .nav-buttons button,
-    .nav-buttons a {
-        width: 100%;
-        text-align: center;
-    }
-
-    .quick-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .card {
-        padding: 19px;
-    }
-
-    .hero h1 {
-        font-size: 28px;
-    }
-
-}
-    /* =========================
-   TIGER FINANCE MOBILE DESIGN
-========================= */
-
-html {
+    scroll-padding-top: 25px;
     width: 100%;
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
 }
 
 body {
+    margin: 0;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+    padding-bottom: 85px;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
 }
 
 button,
@@ -517,108 +105,486 @@ textarea {
 }
 
 button,
-.nav-buttons a {
+a {
     -webkit-tap-highlight-color: transparent;
 }
 
 button {
-    min-height: 46px;
+    cursor: pointer;
+    min-height: 44px;
+}
+
+a {
+    color: var(--purple-light);
+}
+
+h1,
+h2,
+h3,
+p {
+    overflow-wrap: anywhere;
+}
+
+h2,
+h3 {
+    color: var(--text);
+}
+
+.small {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    padding: 16px;
+
+    background: rgba(11, 16, 32, 0.96);
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(14px);
+}
+
+.logo {
+    margin: 0 0 15px;
+    text-align: center;
+
+    color: white;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.nav-buttons button,
+.nav-buttons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px 14px;
+
+    background: var(--panel);
+    color: var(--muted);
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: background 0.2s ease;
+}
+
+.nav-buttons button:hover,
+.nav-buttons a:hover {
+    background: var(--purple);
+    color: white;
+}
+
+/* =========================================
+   LOGIN AND SIGN UP
+========================================= */
+
+.auth-section {
+    width: calc(100% - 30px);
+    max-width: 600px;
+
+    margin: 25px auto;
+    padding: 25px;
+
+    background: var(--panel);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.auth-section h2 {
+    color: white;
+}
+
+.auth-section p {
+    color: var(--muted);
+}
+
+.auth-section input {
+    margin-top: 10px;
+}
+
+.auth-section button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: var(--purple);
+    color: white;
+
+    font-weight: bold;
+}
+
+.auth-message {
+    margin-top: 12px;
+    color: var(--teal);
+    font-weight: bold;
+}
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.container {
+    width: 100%;
+    max-width: 1250px;
+
+    margin: 0 auto;
+    padding: 18px;
+}
+
+.card {
+    margin: 20px 0;
+    padding: 25px;
+
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+.card h2 {
+    margin-top: 0;
+    color: white;
+    font-size: 22px;
+}
+
+.card h2::first-letter {
+    color: var(--purple-light);
+}
+
+/* =========================================
+   HOME DASHBOARD
+========================================= */
+
+.hero {
+    text-align: left;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 32px;
+    line-height: 1.25;
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.quick-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.quick-grid button {
+    min-height: 85px;
+    padding: 18px;
+
+    background: var(--panel-light);
+    color: white;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.quick-grid button:hover {
+    border-color: var(--purple);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   INPUTS AND FORMS
+========================================= */
+
+label {
+    display: block;
+    margin-top: 17px;
+    margin-bottom: 7px;
+
+    color: #dce4ff;
+    font-weight: bold;
 }
 
 input,
 select,
 textarea {
-    min-height: 44px;
-    border-radius: 10px;
+    display: block;
+    width: 100%;
+    min-height: 46px;
+
+    padding: 13px;
+
+    background: #0e1528;
+    color: white;
+
+    border: 1px solid var(--border);
+    border-radius: 11px;
+
+    font-size: 16px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+input::placeholder,
+textarea::placeholder {
+    color: #7886a8;
 }
 
-@media screen and (max-width: 600px) {
-
-    body {
-        font-size: 15px;
-        line-height: 1.5;
-    }
-
-    header,
-    .top-nav {
-        padding: 12px;
-    }
-
-    .container,
-    main,
-    .content {
-        width: 100%;
-        max-width: 100%;
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-
-    h1 {
-        font-size: 25px;
-        line-height: 1.25;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    h3 {
-        font-size: 17px;
-    }
-
-    .card {
-        width: 100%;
-        padding: 16px;
-        margin-bottom: 15px;
-        border-radius: 14px;
-    }
-
-    .nav-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        width: 100%;
-    }
-
-    .nav-buttons a {
-        flex: 1 1 28%;
-        text-align: center;
-        padding: 10px 7px;
-        font-size: 13px;
-        border-radius: 9px;
-    }
-
-    button {
-        width: 100%;
-        padding: 13px;
-    }
-
-    input,
-    select,
-    textarea {
-        width: 100%;
-        font-size: 16px;
-    }
-
-    table {
-        display: block;
-        max-width: 100%;
-        overflow-x: auto;
-    }
-
-    .stat {
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--purple);
+    border-color: var(--purple);
 }
 
-/* TIGER FINANCE MOBILE BOTTOM NAVIGATION */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.primary-btn {
+    display: block;
+    width: 100%;
+
+    margin-top: 18px;
+    padding: 14px;
+
+    background: var(--purple);
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    transition: background 0.2s ease;
+}
+
+.primary-btn:hover {
+    background: #6253ed;
+}
+
+/* =========================================
+   CALCULATOR RESULTS
+========================================= */
+
+.result {
+    margin-top: 18px;
+    padding: 18px;
+
+    background: #101a2e;
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+    border-radius: 12px;
+
+    line-height: 1.9;
+}
+
+.warning {
+    color: #ffc96b;
+    font-weight: bold;
+}
+
+.open {
+    color: var(--green);
+    font-weight: bold;
+}
+
+.closed {
+    color: var(--red);
+    font-weight: bold;
+}
+
+.price {
+    color: var(--teal);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* =========================================
+   MARKET CARDS
+========================================= */
+
+.market-card {
+    margin-top: 16px;
+    padding: 20px;
+
+    background: var(--panel-light);
+
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--purple);
+    border-radius: 15px;
+}
+
+.market-card h3 {
+    margin-top: 0;
+    color: white;
+    font-size: 19px;
+}
+
+.market-card p {
+    color: var(--muted);
+}
+
+.market-card .open {
+    color: var(--green);
+}
+
+.market-card .closed {
+    color: var(--red);
+}
+
+.market-card .price {
+    color: var(--teal);
+}
+
+/* =========================================
+   NEWS
+========================================= */
+
+.news-item {
+    margin-top: 14px;
+    padding: 17px;
+
+    background: var(--panel-light);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--purple);
+    border-radius: 13px;
+
+    line-height: 1.7;
+}
+
+.news-item p {
+    color: var(--muted);
+}
+
+/* =========================================
+   WATCHLIST
+========================================= */
+
+.watch-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 12px;
+    padding: 13px;
+
+    background: #10182b;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+}
+
+.watch-item strong {
+    color: white;
+    overflow-wrap: anywhere;
+}
+
+.remove-btn,
+.delete-btn {
+    min-height: 40px;
+    padding: 9px 12px;
+
+    background: #7e263b;
+    color: white;
+
+    border: 1px solid #a83a51;
+    border-radius: 9px;
+
+    cursor: pointer;
+}
+
+/* =========================================
+   TRADING JOURNAL
+========================================= */
+
+.journal-entry {
+    margin-top: 15px;
+    padding: 18px;
+
+    background: var(--panel-light);
+    color: #e6ebff;
+
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+    border-radius: 13px;
+
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.journal-entry strong {
+    color: white;
+    font-size: 17px;
+}
+
+.journal-entry .delete-btn {
+    margin-top: 12px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 30px 15px;
+    text-align: center;
+
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+}
+
+footer strong {
+    color: white;
+}
+
+/* =========================================
+   MOBILE BOTTOM NAVIGATION
+========================================= */
 
 .mobile-bottom-nav {
     display: none;
@@ -627,7 +593,93 @@ img {
 @media screen and (max-width: 600px) {
 
     body {
-        padding-bottom: 90px;
+        padding-bottom: 95px;
+        font-size: 15px;
+    }
+
+    .top-nav {
+        position: relative;
+        padding: 17px 12px;
+    }
+
+    .logo {
+        margin: 0;
+        font-size: 27px;
+    }
+
+    /* Use the bottom bar instead of the large
+       row of navigation buttons on mobile. */
+    .top-nav .nav-buttons {
+        display: none;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .card {
+        width: 100%;
+        margin: 13px 0;
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .card h2 {
+        font-size: 20px;
+    }
+
+    .hero {
+        text-align: left;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .quick-grid button {
+        min-height: 90px;
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+
+    .auth-section {
+        width: calc(100% - 20px);
+        margin: 15px auto;
+        padding: 20px;
+        border-radius: 17px;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+    .market-card {
+        padding: 16px;
+    }
+
+    .watch-item {
+        align-items: stretch;
+    }
+
+    .watch-item .remove-btn {
+        width: 100%;
+    }
+
+    table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
     }
 
     .mobile-bottom-nav {
@@ -642,14 +694,14 @@ img {
         align-items: center;
         gap: 2px;
 
-        background: #ffffff;
-        border-top: 1px solid #dce7e8;
-        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
-
         padding: 8px 4px;
         padding-bottom: calc(
             8px + env(safe-area-inset-bottom)
         );
+
+        background: #101729;
+        border-top: 1px solid var(--border);
+        box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.3);
     }
 
     .mobile-bottom-nav a {
@@ -662,12 +714,13 @@ img {
         align-items: center;
         gap: 3px;
 
-        color: #657477;
+        padding: 7px 2px;
+
+        color: var(--muted);
         text-decoration: none;
         font-size: 11px;
         font-weight: bold;
 
-        padding: 7px 2px;
         border-radius: 10px;
     }
 
@@ -677,17 +730,100 @@ img {
     }
 
     .mobile-bottom-nav a.active {
-        color: #087d88;
-        background: #e7f8f9;
+        color: white;
+        background: #342c68;
     }
 
     .mobile-bottom-nav a:focus-visible {
-        outline: 2px solid #087d88;
+        outline: 2px solid var(--purple-light);
         outline-offset: 2px;
     }
-}    
 
-    
+}
+
+/* =========================================
+   DESKTOP SIDEBAR-STYLE NAVIGATION
+========================================= */
+
+@media screen and (min-width: 1000px) {
+
+    body {
+        padding-left: 250px;
+        padding-bottom: 0;
+    }
+
+    .top-nav {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 250px;
+        height: 100vh;
+        overflow-y: auto;
+
+        padding: 25px 15px;
+
+        background: #0e1425;
+        border-right: 1px solid var(--border);
+        border-bottom: none;
+    }
+
+    .logo {
+        margin: 10px 0 30px;
+        font-size: 25px;
+        text-align: left;
+    }
+
+    .nav-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .nav-buttons button,
+    .nav-buttons a {
+        width: 100%;
+        min-height: 48px;
+
+        justify-content: flex-start;
+        padding: 13px;
+
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 11px;
+
+        color: var(--muted);
+        text-align: left;
+    }
+
+    .nav-buttons button:hover,
+    .nav-buttons a:hover {
+        background: #29264e;
+        border-color: #454080;
+        color: white;
+    }
+
+    .container {
+        max-width: 1450px;
+        padding: 25px;
+    }
+
+    .auth-section {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .mobile-bottom-nav {
+        display: none !important;
+    }
+
+    .quick-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+}
 
 </style>
 
