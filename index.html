@@ -618,6 +618,77 @@ img {
 
 }
 
+/* TIGER FINANCE MOBILE BOTTOM NAVIGATION */
+
+.mobile-bottom-nav {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+
+    body {
+        padding-bottom: 90px;
+    }
+
+    .mobile-bottom-nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 2px;
+
+        background: #ffffff;
+        border-top: 1px solid #dce7e8;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
+
+        padding: 8px 4px;
+        padding-bottom: calc(
+            8px + env(safe-area-inset-bottom)
+        );
+    }
+
+    .mobile-bottom-nav a {
+        flex: 1;
+        min-width: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3px;
+
+        color: #657477;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: bold;
+
+        padding: 7px 2px;
+        border-radius: 10px;
+    }
+
+    .mobile-bottom-nav a .nav-icon {
+        font-size: 21px;
+        line-height: 1.2;
+    }
+
+    .mobile-bottom-nav a.active {
+        color: #087d88;
+        background: #e7f8f9;
+    }
+
+    .mobile-bottom-nav a:focus-visible {
+        outline: 2px solid #087d88;
+        outline-offset: 2px;
+    }
+}    
+
+    
+
 </style>
 
 </head>
