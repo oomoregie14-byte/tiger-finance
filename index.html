@@ -3097,6 +3097,79 @@ async function deleteJournal(id) {
 
 }
 
+/* =========================================
+   TIGER FINANCE DASHBOARD STATISTICS
+========================================= */
+
+async function updateDashboardStats() {
+    const totalElement =
+        document.getElementById("dashboardTotalTrades");
+
+    const winRateElement =
+        document.getElementById("dashboardWinRate");
+
+    const profitLossElement =
+        document.getElementById("dashboardProfitLoss");
+
+    const balanceElement =
+        document.getElementById("dashboardBalance");
+
+    if (!totalElement || !winRateElement ||
+        !profitLossElement || !balanceElement) {
+        return;
+    }
+
+    const user = await getCurrentUser();
+
+    if (!user) {
+        totalElement.textContent = "—";
+        winRateElement.textContent = "—";
+        profitLossElement.textContent = "—";
+        balanceElement.textContent = "Login required";
+        return;
+    }
+
+    const { data: trades, error } =
+        await supabaseClient
+            .from("trades")
+            .select("result")
+            .eq("user_id", user.id);
+
+    if (error) {
+        console.error("Dashboard statistics error:", error);
+        totalElement.textContent = "Unavailable";
+        winRateElement.textContent = "Unavailable";
+        profitLossElement.textContent = "Unavailable";
+        balanceElement.textContent = "Not connected";
+        return;
+    }
+
+    const entries = trades || [];
+
+    const wins = entries.filter(
+        trade => String(trade.result).toUpperCase() === "WIN"
+    ).length;
+
+    const losses = entries.filter(
+        trade => String(trade.result).toUpperCase() === "LOSS"
+    ).length;
+
+    const completedTrades = wins + losses;
+
+    const winRate = completedTrades > 0
+        ? (wins / completedTrades) * 100
+        : null;
+
+    totalElement.textContent = entries.length;
+
+    winRateElement.textContent = winRate === null
+        ? "—"
+        : winRate.toFixed(1) + "%";
+
+    profitLossElement.textContent = "Amount not recorded";
+    balanceElement.textContent = "Broker connection required";
+}
+
 
 /* ==================================================
    LOGIN STATE
