@@ -920,6 +920,10 @@ footer strong {
         font-size: 17px;
     }
 }
+
+[hidden] {
+    display: none !important;
+}
 </style>
 
 </head>
@@ -1745,18 +1749,29 @@ footer strong {
    ================================================== */
 
 function scrollToSection(id) {
+    const sections = [
+        "home",
+        "forex",
+        "markets",
+        "journal"
+    ];
 
-    const section =
-        document.getElementById(id);
-
-    if (section) {
-
-        section.scrollIntoView({
-            behavior: "smooth"
-        });
-
+    if (!sections.includes(id)) {
+        return;
     }
 
+    sections.forEach(function (sectionId) {
+        const section = document.getElementById(sectionId);
+
+        if (section) {
+            section.hidden = sectionId !== id;
+        }
+    });
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
@@ -3483,6 +3498,7 @@ supabaseClient.auth.onAuthStateChange(
    ================================================== */
 
 updateMarketDashboard();
+scrollToSection("home");
 
 updateDashboardStats();
 
