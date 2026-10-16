@@ -1750,11 +1750,12 @@ footer strong {
 
 function scrollToSection(id) {
     const sections = [
-        "home",
-        "forex",
-        "markets",
-        "journal"
-    ];
+    "home",
+    "forex",
+    "markets",
+    "news",
+    "journal"
+];
 
     if (!sections.includes(id)) {
         return;
@@ -3549,6 +3550,11 @@ scrollToSection("home");
         <span class="nav-icon">🌐</span>
         <span>Markets</span>
     </a>
+
+<a href="#news" onclick="scrollToSection('news'); return false;">
+    <span class="nav-icon">📰</span>
+    <span>News</span>
+</a>
 
     <a href="#journal" onclick="scrollToSection('journal'); return false;">
         <span class="nav-icon">📒</span>
