@@ -13,7 +13,7 @@
 </head>
 <body>
 <div id="authShell" class="auth-wrap">
-  <div class="hero"><div class="brand">ð¯ TIGER <span>FINANCE</span></div><h1>Welcome to Tiger Finance</h1><p class="muted">Your personal trading journal and market dashboard.</p></div>
+  <div class="hero"><div class="brand"> TIGER <span>FINANCE</span></div><h1>Welcome to Tiger Finance</h1><p class="muted">Your personal trading journal and market dashboard.</p></div>
   <div class="auth-grid">
     <form id="loginForm" class="card">
       <h2>Sign in</h2>
@@ -33,7 +33,7 @@
 
 <div id="appShell" class="hidden">
 <header class="topbar"><div class="topinner">
-  <div class="brand">ð¯ TIGER FINANCE</div>
+  <div class="brand"> TIGER FINANCE</div>
   <nav class="nav" aria-label="Main navigation">
     <button data-section="home" class="active">Home</button><button data-section="forex">Forex</button><button data-section="markets">Markets</button><button data-section="news">News</button><button data-section="journal">Journal</button><a href="profile.html">Profile</a><button id="logoutTop" class="secondary">Logout</button>
   </nav>
@@ -42,10 +42,10 @@
 
 <main class="wrap">
 <section id="home" class="section">
-  <div class="card"><h1>Welcome back, Tiger ð¯</h1><p class="muted">Plan your trades, manage risk and record your results. Trade carefully.</p><div class="row"><button data-go="forex">Open risk calculator</button><button data-go="journal" class="secondary">Open trading journal</button></div></div>
+  <div class="card"><h1>Welcome back, Tiger </h1><p class="muted">Plan your trades, manage risk and record your results. Trade carefully.</p><div class="row"><button data-go="forex">Open risk calculator</button><button data-go="journal" class="secondary">Open trading journal</button></div></div>
   <div class="grid">
-    <div class="card"><div class="muted">Journal trades</div><div class="stat" id="totalTrades">â</div></div>
-    <div class="card"><div class="muted">Recorded win rate</div><div class="stat" id="winRate">â</div></div>
+    <div class="card"><div class="muted">Journal trades</div><div class="stat" id="totalTrades">-</div></div>
+    <div class="card"><div class="muted">Recorded win rate</div><div class="stat" id="winRate">-</div></div>
     <div class="card"><div class="muted">Account balance</div><div class="stat">Not connected</div><div class="small muted">Broker connection required.</div></div>
     <div class="card"><div class="muted">Profit / loss</div><div class="stat">Not recorded</div><div class="small muted">Add monetary results in a future version.</div></div>
   </div>
@@ -61,19 +61,19 @@
       <div class="field"><label for="pipValue">Pip value per 1.00 lot (account currency)</label><input id="pipValue" type="number" min="0.0001" step="any" value="10"></div>
     </div>
     <div class="row"><button id="calculateRisk">Calculate</button><button id="resetRisk" class="secondary">Reset</button></div>
-    <div class="grid" style="margin-top:15px"><div class="card"><div class="muted">Money at risk</div><div class="stat" id="riskMoney">â</div></div><div class="card"><div class="muted">Estimated lot size</div><div class="stat" id="lotSize">â</div></div></div><div id="riskMessage" class="message"></div>
+    <div class="grid" style="margin-top:15px"><div class="card"><div class="muted">Money at risk</div><div class="stat" id="riskMoney">-</div></div><div class="card"><div class="muted">Estimated lot size</div><div class="stat" id="lotSize">-</div></div></div><div id="riskMessage" class="message"></div>
   </div>
 </section>
 
 <section id="markets" class="section hidden">
   <h1>Markets dashboard</h1>
   <div class="grid">
-    <div class="card"><h3>Nigeria time</h3><div class="stat" id="lagosClock">â</div><div class="muted small">Africa/Lagos</div></div>
+    <div class="card"><h3>Nigeria time</h3><div class="stat" id="lagosClock">-</div><div class="muted small">Africa/Lagos</div></div>
     <div class="card"><h3>Forex sessions</h3><div id="sessions" class="muted">Session times are approximate and shown in Nigeria time.</div></div>
-    <div class="card"><h3>Crypto prices (USD)</h3><div id="cryptoPrices">Loading pricesâ¦</div><div class="small muted">Data from CoinGecko; may be delayed or unavailable.</div></div>
+    <div class="card"><h3>Crypto prices (USD)</h3><div id="cryptoPrices">Loading prices...</div><div class="small muted">Data from CoinGecko; may be delayed or unavailable.</div></div>
   </div>
   <div class="card"><h2>My watchlist</h2><div class="row"><input id="watchInput" placeholder="Example: EUR/USD, BTC/USD" aria-label="Watchlist item"><button id="addWatch">Add</button></div><ul id="watchList"></ul></div>
-  <div class="card"><h2>Stock market hours</h2><p>US markets: commonly 9:30 a.m.â4:00 p.m. New York time on trading weekdays.</p><p>Nigerian Exchange: check the exchangeâs official calendar for current hours and holidays.</p><p class="small muted">This page does not check public holidays or live exchange status.</p></div>
+  <div class="card"><h2>Stock market hours</h2><p>US markets: commonly 9:30 a.m.-4:00 p.m. New York time on trading weekdays.</p><p>Nigerian Exchange: check the exchange's official calendar for current hours and holidays.</p><p class="small muted">This page does not check public holidays or live exchange status.</p></div>
 </section>
 
 <section id="news" class="section hidden">
@@ -96,11 +96,11 @@
     <div class="field"><label for="notes">Notes</label><textarea id="notes" maxlength="1000" placeholder="Why did you enter? What did you learn?"></textarea></div>
     <button type="submit" id="saveTrade">Save trade</button><div id="journalMessage" class="message" role="status"></div>
   </form>
-  <div class="card"><h2>Saved trades</h2><div id="tradeList" class="table-wrap"><p class="muted">Loading your journalâ¦</p></div></div>
+  <div class="card"><h2>Saved trades</h2><div id="tradeList" class="table-wrap"><p class="muted">Loading your journal...</p></div></div>
 </section>
 </main>
-<div class="footer">Tiger Finance Â· Educational tools only. Trading involves risk.</div>
-<nav class="bottomnav" aria-label="Mobile navigation"><button data-section="home" class="active">â<br>Home</button><button data-section="forex">â<br>Forex</button><button data-section="markets">â·<br>Markets</button><button data-section="news">â¤<br>News</button><button data-section="journal">â·<br>Journal</button><a href="profile.html" style="padding:8px 5px;text-align:center;font-size:12px">âº<br>Profile</a></nav>
+<div class="footer">Tiger Finance - Educational tools only. Trading involves risk.</div>
+<nav class="bottomnav" aria-label="Mobile navigation"><button data-section="home" class="active"><br>Home</button><button data-section="forex"><br>Forex</button><button data-section="markets"><br>Markets</button><button data-section="news"><br>News</button><button data-section="journal"><br>Journal</button><a href="profile.html" style="padding:8px 5px;text-align:center;font-size:12px"><br>Profile</a></nav>
 </div>
 
 <script>
@@ -138,17 +138,17 @@
   document.querySelectorAll('[data-go]').forEach(btn => btn.addEventListener('click', () => scrollToSection(btn.dataset.go)));
 
   async function signIn(event) {
-    event.preventDefault(); message('loginMessage','Signing inâ¦');
+    event.preventDefault(); message('loginMessage','Signing in...');
     $('loginButton').disabled = true;
     const {error} = await supabaseClient.auth.signInWithPassword({
       email: $('loginEmail').value.trim(), password: $('loginPassword').value
     });
     $('loginButton').disabled = false;
     if (error) message('loginMessage', error.message, true);
-    else message('loginMessage','Signed in. Opening your dashboardâ¦');
+    else message('loginMessage','Signed in. Opening your dashboard...');
   }
   async function signUp(event) {
-    event.preventDefault(); message('signupMessage','Creating your accountâ¦');
+    event.preventDefault(); message('signupMessage','Creating your account...');
     $('signupButton').disabled = true;
     const {data,error} = await supabaseClient.auth.signUp({
       email: $('signupEmail').value.trim(), password: $('signupPassword').value,
@@ -171,7 +171,7 @@
 
   async function loadTrades() {
     if (!currentUser) return;
-    $('tradeList').textContent = 'Loading your journalâ¦';
+    $('tradeList').textContent = 'Loading your journal...';
     const {data,error} = await supabaseClient.from('trades')
       .select('id,user_id,pair,direction,entry,result,notes,created_at')
       .eq('user_id',currentUser.id).order('created_at',{ascending:false});
@@ -192,14 +192,14 @@
     const tbody=document.createElement('tbody');
     trades.forEach(t=>{
       const tr=document.createElement('tr');
-      [t.created_at ? new Date(t.created_at).toLocaleDateString() : 'â',t.pair,t.direction,t.entry,t.result,t.notes || 'â'].forEach(value=>{const td=document.createElement('td');td.textContent=String(value ?? 'â');tr.append(td);});
+      [t.created_at ? new Date(t.created_at).toLocaleDateString() : '-',t.pair,t.direction,t.entry,t.result,t.notes || '-'].forEach(value=>{const td=document.createElement('td');td.textContent=String(value ?? '-');tr.append(td);});
       const action=document.createElement('td'), del=document.createElement('button'); del.textContent='Delete';del.className='danger';del.addEventListener('click',()=>deleteTrade(t.id));action.append(del);tr.append(action);tbody.append(tr);
     });
     table.append(tbody);host.append(table);
   }
   $('tradeForm').addEventListener('submit', async event=>{
     event.preventDefault(); if(!currentUser)return;
-    $('saveTrade').disabled=true;message('journalMessage','Saving tradeâ¦');
+    $('saveTrade').disabled=true;message('journalMessage','Saving trade...');
     const record={user_id:currentUser.id,pair:$('pair').value.trim(),direction:$('direction').value,entry:Number($('entry').value),result:$('result').value,notes:$('notes').value.trim()};
     const {error}=await supabaseClient.from('trades').insert(record);
     $('saveTrade').disabled=false;
@@ -216,7 +216,7 @@
     $('totalTrades').textContent=trades.length;
     const closed=trades.filter(t=>['Win','Loss'].includes(t.result));
     const wins=closed.filter(t=>t.result==='Win').length;
-    $('winRate').textContent=closed.length ? (wins/closed.length*100).toFixed(1)+'%' : 'â';
+    $('winRate').textContent=closed.length ? (wins/closed.length*100).toFixed(1)+'%' : '-';
   }
 
   function calculateRisk() {
@@ -248,7 +248,7 @@
       const response=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd');
       if(!response.ok)throw new Error('Price service unavailable');
       const data=await response.json();
-      $('cryptoPrices').textContent='Bitcoin: $'+Number(data.bitcoin.usd).toLocaleString('en-US')+' Â· Ethereum: $'+Number(data.ethereum.usd).toLocaleString('en-US');
+      $('cryptoPrices').textContent='Bitcoin: $'+Number(data.bitcoin.usd).toLocaleString('en-US')+' - Ethereum: $'+Number(data.ethereum.usd).toLocaleString('en-US');
     } catch(error) {$('cryptoPrices').textContent='Prices temporarily unavailable. Try again later.';}
   }
 
